@@ -7,8 +7,8 @@ felhasználásával oldja meg a következő feladatokat!
 beosztas={}
 beosztasok=[]
 segedlista=[]
-with open("beosztas.txt","r",encoding="utf-8") as fm1:
-    for sor in fm1:
+with open("beosztas.txt","r",encoding="utf-8") as fin:
+    for sor in fin:
         segedlista.append(sor.strip())
         if len(segedlista)==4:
             beosztas["tanar"]=segedlista[0]
@@ -56,3 +56,19 @@ def tanar_oraszamanak_osszegzese(bok,be_nev):
 
 print(f"A tanár heti óraszáma: {tanar_oraszamanak_osszegzese(beosztasok,be_tanarnev)}")
 
+"""
+5. feladat
+Készítse el az of.txt fájlt, amely az osztályfőnökök nevét tartalmazza osztályonként
+az alábbi formában (az osztályok megjelenítésének sorrendje a mintától eltérhet):
+
+9.a - Albatrosz Aladin
+9.b - Hangya Hanna
+9.c - Zerge Zenina
+…
+"""
+
+#kiválogatás
+with open("of.txt","w",encoding="utf-8") as fout:
+    for beosztas in beosztasok:
+        if beosztas["tantargy"]=="osztalyfonoki":
+            print(f"{beosztas['osztaly']} - {beosztas['tanar']}", file=fout)
